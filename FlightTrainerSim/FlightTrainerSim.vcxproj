@@ -37,12 +37,12 @@
   </ImportGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>6.10.1_msvc2022_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;multimedia</QtModules>
     <QtBuildConfig>debug</QtBuildConfig>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'" Label="QtSettings">
     <QtInstall>6.10.1_msvc2022_64</QtInstall>
-    <QtModules>core;gui;widgets</QtModules>
+    <QtModules>core;gui;widgets;multimedia</QtModules>
     <QtBuildConfig>release</QtBuildConfig>
   </PropertyGroup>
   <Target Name="QtMsBuildNotFound" BeforeTargets="CustomBuild;ClCompile" Condition="!Exists('$(QtMsBuild)\qt.targets') or !Exists('$(QtMsBuild)\qt.props')">
@@ -93,6 +93,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Aircraft.cpp" />
+    <ClCompile Include="AudioSystem.cpp" />
     <ClCompile Include="Cockpit3DView.cpp" />
     <ClCompile Include="DebriefWindow.cpp" />
     <ClCompile Include="Environment.cpp" />
@@ -138,6 +139,7 @@
   <ItemGroup>
     <ClInclude Include="Aircraft.h" />
     <ClInclude Include="AircraftFactory.h" />
+    <QtMoc Include="AudioSystem.h" />
     <ClInclude Include="Environment.h" />
     <ClInclude Include="FlightMetrics.h" />
     <ClInclude Include="GlobalConfig.h" />

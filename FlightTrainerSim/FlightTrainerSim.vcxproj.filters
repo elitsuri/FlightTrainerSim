@@ -73,6 +73,9 @@
     <ClCompile Include="IFlightModel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AudioSystem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="README.md" />
@@ -101,6 +104,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="SimulationEngine.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="AudioSystem.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>

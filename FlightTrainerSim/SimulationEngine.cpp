@@ -1,11 +1,17 @@
-// File: SimulationEngine.cpp - FIXED VERSION
+// File: SimulationEngine.cpp - WITH AUDIO
 #include "SimulationEngine.h"
 #include "GlobalConfig.h"
 
 SimulationEngine::SimulationEngine(QObject* parent)
-    : QObject(parent), m_environment(std::make_unique<Environment>())
-    , m_metrics(std::make_unique<FlightMetrics>()), m_updateTimer(std::make_unique<QTimer>(this))
-    , m_isRunning(false), m_isPaused(false), m_simulationTime(0.0) {
+    : QObject(parent)
+    , m_environment(std::make_unique<Environment>())
+    , m_metrics(std::make_unique<FlightMetrics>())
+    , m_audioSystem(std::make_unique<AudioSystem>(this))
+    , m_updateTimer(std::make_unique<QTimer>(this))
+    , m_isRunning(false)
+    , m_isPaused(false)
+    , m_simulationTime(0.0) {
+
     auto& config = GlobalConfig::instance();
     int updateIntervalMs = static_cast<int>(1000.0 / config.updateRateHz());
     m_updateTimer->setInterval(updateIntervalMs);
@@ -25,8 +31,10 @@ void SimulationEngine::pause() {
     if (!m_isRunning) return;
 
     m_isPaused = !m_isPaused;
+
     if (m_isPaused) {
         m_updateTimer->stop();
+        m_audioSystem->stopAll();
         emit stateChanged("Paused");
     }
     else {
@@ -39,14 +47,17 @@ void SimulationEngine::stop() {
     m_isRunning = false;
     m_isPaused = false;
     m_updateTimer->stop();
+    m_audioSystem->stopAll();
     emit stateChanged("Stopped");
 }
 
 void SimulationEngine::reset() {
     stop();
+
     if (m_activeAircraft) m_activeAircraft->reset();
     if (m_scenario) m_scenario->reset();
     if (m_metrics) m_metrics->reset();
+
     m_simulationTime = 0.0;
     emit stateChanged("Reset");
     emit simulationUpdated();
@@ -61,7 +72,6 @@ void SimulationEngine::setScenario(std::unique_ptr<TrainingScenario> scenario) {
     if (m_scenario) m_scenario->reset();
 }
 
-// FIX 1: Always accept control inputs
 void SimulationEngine::setControlInputs(const ControlInputs& controls) {
     if (m_activeAircraft) {
         m_activeAircraft->setControls(controls);
@@ -82,6 +92,9 @@ void SimulationEngine::updateSimulation() {
     // Record metrics
     m_metrics->recordSnapshot(*m_activeAircraft, m_simulationTime);
 
+    // Update audio
+    updateAudio();
+
     // Check scenario completion
     if (m_scenario->isCompleted()) {
         stop();
@@ -94,7 +107,7 @@ void SimulationEngine::updateSimulation() {
         return;
     }
 
-    // FIX 2: Always check warnings
+    // Check warnings
     checkWarnings();
 
     m_simulationTime += deltaTime;
@@ -106,6 +119,10 @@ void SimulationEngine::checkWarnings() {
 
     if (m_activeAircraft->isStalled()) {
         emit warningIssued("STALL WARNING");
+        m_audioSystem->playSound(SoundType::Stall);
+    }
+    else {
+        m_audioSystem->stopSound(SoundType::Stall);
     }
 
     if (m_activeAircraft->fuel() < 100.0) {
@@ -114,5 +131,16 @@ void SimulationEngine::checkWarnings() {
 
     if (m_activeAircraft->altitude() < 50.0 && !m_activeAircraft->isOnGround()) {
         emit warningIssued("ALTITUDE WARNING");
+        m_audioSystem->playWarning();
     }
+}
+
+void SimulationEngine::updateAudio() {
+    if (!m_activeAircraft) return;
+
+    // Update engine sound based on throttle
+    m_audioSystem->setEngineVolume(m_activeAircraft->controls().throttle);
+
+    // Update wind noise based on speed
+    m_audioSystem->setWindVolume(m_activeAircraft->speed());
 }
