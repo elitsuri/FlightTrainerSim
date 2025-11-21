@@ -1,4 +1,4 @@
-// File: SimulationEngine.cpp
+// File: SimulationEngine.cpp - FIXED VERSION
 #include "SimulationEngine.h"
 #include "GlobalConfig.h"
 
@@ -14,6 +14,7 @@ SimulationEngine::SimulationEngine(QObject* parent)
 
 void SimulationEngine::start() {
     if (!m_activeAircraft || !m_scenario) return;
+
     m_isRunning = true;
     m_isPaused = false;
     m_updateTimer->start();
@@ -22,9 +23,16 @@ void SimulationEngine::start() {
 
 void SimulationEngine::pause() {
     if (!m_isRunning) return;
+
     m_isPaused = !m_isPaused;
-    if (m_isPaused) { m_updateTimer->stop(); emit stateChanged("Paused"); }
-    else { m_updateTimer->start(); emit stateChanged("Running"); }
+    if (m_isPaused) {
+        m_updateTimer->stop();
+        emit stateChanged("Paused");
+    }
+    else {
+        m_updateTimer->start();
+        emit stateChanged("Running");
+    }
 }
 
 void SimulationEngine::stop() {
@@ -53,27 +61,58 @@ void SimulationEngine::setScenario(std::unique_ptr<TrainingScenario> scenario) {
     if (m_scenario) m_scenario->reset();
 }
 
+// FIX 1: Always accept control inputs
 void SimulationEngine::setControlInputs(const ControlInputs& controls) {
-    if (m_activeAircraft) m_activeAircraft->setControls(controls);
+    if (m_activeAircraft) {
+        m_activeAircraft->setControls(controls);
+    }
 }
 
 void SimulationEngine::updateSimulation() {
     if (!m_activeAircraft || !m_scenario || m_isPaused) return;
+
     double deltaTime = GlobalConfig::instance().physicsTimeStep();
+
+    // Update aircraft physics
     m_activeAircraft->update(deltaTime);
+
+    // Update scenario
     m_scenario->update(*m_activeAircraft, deltaTime);
+
+    // Record metrics
     m_metrics->recordSnapshot(*m_activeAircraft, m_simulationTime);
-    if (m_scenario->isCompleted()) { stop(); emit scenarioFinished(true); return; }
-    else if (m_scenario->isFailed()) { stop(); emit scenarioFinished(false); return; }
+
+    // Check scenario completion
+    if (m_scenario->isCompleted()) {
+        stop();
+        emit scenarioFinished(true);
+        return;
+    }
+    else if (m_scenario->isFailed()) {
+        stop();
+        emit scenarioFinished(false);
+        return;
+    }
+
+    // FIX 2: Always check warnings
     checkWarnings();
+
     m_simulationTime += deltaTime;
     emit simulationUpdated();
 }
 
 void SimulationEngine::checkWarnings() {
     if (!m_activeAircraft) return;
-    if (m_activeAircraft->isStalled()) emit warningIssued("STALL WARNING");
-    if (m_activeAircraft->fuel() < 100.0) emit warningIssued("LOW FUEL");
-    if (m_activeAircraft->altitude() < 50.0 && !m_activeAircraft->isOnGround())
+
+    if (m_activeAircraft->isStalled()) {
+        emit warningIssued("STALL WARNING");
+    }
+
+    if (m_activeAircraft->fuel() < 100.0) {
+        emit warningIssued("LOW FUEL");
+    }
+
+    if (m_activeAircraft->altitude() < 50.0 && !m_activeAircraft->isOnGround()) {
         emit warningIssued("ALTITUDE WARNING");
+    }
 }

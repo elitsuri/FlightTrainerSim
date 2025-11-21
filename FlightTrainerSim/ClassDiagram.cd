@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Aircraft" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ICQRACEEAjAoAAgBAAAAIABCAJBGkWAAEiEBYCAEBQA=</HashCode>
+      <FileName>Aircraft.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AircraftFactory" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>AircraftFactory.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Environment" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAkAAAAAAAAAAAAAACRIAAAAIAAARAQQAAAE=</HashCode>
+      <FileName>Environment.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightMetrics" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCIASAEAAAAAAgAAAAAAgAAoAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>FlightMetrics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DebriefReport" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAwAAAQAAAACAAgAAAAAAEAAAAAAAAAAwAgBABBIAgA=</HashCode>
+      <FileName>FlightMetrics.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GlobalConfig" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAIAAhAAIAAAASAAAAAEAIAAABACAQANACgIAEAAgA=</HashCode>
+      <FileName>GlobalConfig.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IFlightModel" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAECAAEg=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainerFlightModel" Collapsed="true">
+    <Position X="2.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAECAAEA=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="JetFlightModel" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAECAAEA=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CargoFlightModel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAEAAAEAAAAAAAAAAAAECAAEA=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TrainingScenario" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>kEAAAEAFAAABAQJAJgACAAAQEkAEAAAAKAkQACBEAAQ=</HashCode>
+      <FileName>TrainingScenario.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightTrainerSim" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAQgAA=</HashCode>
+      <FileName>FlightTrainerSim.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MainWindow" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ISAAQAAAAHAYAgQQAIwUBAAEDBABAAAAADAIAACABAA=</HashCode>
+      <FileName>MainWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DebriefWindow" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAAAAAAABAQAQAAAAAAAAEAAABAAAAA=</HashCode>
+      <FileName>DebriefWindow.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FlightControlPanel" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EgAAAAAQAMACEABAAAAARAiAAAAAAQhAAAEAACAAADA=</HashCode>
+      <FileName>FlightControlPanel.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Outside3DView" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAACAAAAAAACAABAAoCAAAGAgAAAAYAAAAAAAQCCA=</HashCode>
+      <FileName>Outside3DView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Cockpit3DView" Collapsed="true">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>A4MAAAgAAAAAABAABEAAAAAAEAAAIAAAGQABgAAAACA=</HashCode>
+      <FileName>Cockpit3DView.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SimulationEngine" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAIkAEAAAAAihwAAAQACIQAAAhAAAIAAQAChgAIAA=</HashCode>
+      <FileName>SimulationEngine.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Position3D" Collapsed="true">
+    <Position X="9.25" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAQAAAAA=</HashCode>
+      <FileName>Aircraft.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Orientation" Collapsed="true">
+    <Position X="7.5" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAEAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Aircraft.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Waypoint" Collapsed="true">
+    <Position X="12.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAgAAAAAAAAAAAAAAIAEAAAAAABgAAAAAAA=</HashCode>
+      <FileName>Environment.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Airfield" Collapsed="true">
+    <Position X="7.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQACAAAAAAAAAAAAAEAAAAAABgAIAAAAA=</HashCode>
+      <FileName>Environment.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="WeatherCondition" Collapsed="true">
+    <Position X="7.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAIAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>Environment.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MetricSnapshot" Collapsed="true">
+    <Position X="12.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAgAAAAAAAAAAAAoAAAQAAAEAAAAAABAA=</HashCode>
+      <FileName>FlightMetrics.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="FlightState" Collapsed="true">
+    <Position X="11" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAACAAAAAAAAAABAAAAAAAQAAABAAwA=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="ControlInputs" Collapsed="true">
+    <Position X="9.25" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAgAAAIAAAAAAQAAAAAAAAAEAAAAAAIAAA=</HashCode>
+      <FileName>IFlightModel.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="StateTransitionRule" Collapsed="true">
+    <Position X="11" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAIAAAAAACAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>TrainingScenario.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="AircraftType" Collapsed="true">
+    <Position X="7.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAACAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>AircraftFactory.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ScenarioState" Collapsed="true">
+    <Position X="9.25" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAACAgAEAAAAABAgIAAgAAA=</HashCode>
+      <FileName>TrainingScenario.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
